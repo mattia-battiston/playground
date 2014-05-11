@@ -1,5 +1,6 @@
 package com.playground.simplewebapp;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,10 @@ public class Greeter extends HttpServlet {
 
         String result = "Hello " + username + "!";
 
-        response.getWriter().print(result);
+        request.setAttribute("greetingMessage", result);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("greetingResult.jsp");
+        dispatcher.forward(request, response);
     }
 
     public String greet(String name) {
