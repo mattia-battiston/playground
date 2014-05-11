@@ -9,4 +9,15 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <display-name>Greeter</display-name>
+        <servlet-name>greeterServlet</servlet-name>
+        <servlet-class>com.playground.simplewebapp.Greeter</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>greeterServlet</servlet-name>
+        <url-pattern>/greetUser</url-pattern>
+    </servlet-mapping>
+
 </web-app>
