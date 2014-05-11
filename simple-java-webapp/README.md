@@ -1,0 +1,2 @@
+This project is a simple example of how to create a java web application in an "old" style: web.xml, jsp, servlet
+Back in the days this used to be the way to go, before the first web frameworks came out (e.g. struts, tapestry, etc.)
