@@ -1,12 +1,9 @@
 apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
 
 sourceCompatibility = 1.7
 version = '1.0'
-
-task wrapper(type: Wrapper) {
-  gradleVersion = '1.12'
-  distributionUrl = 'http://services.gradle.org/distributions/gradle-1.12-all.zip'
-}
 
 repositories {
     mavenCentral()
@@ -14,4 +11,23 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task deployToTomcat << {
+    println 'Deploying to Tomcat...'
+
+    copy {
+        from 'build/libs'
+        into '/Users/mattia/tools/tomcat/apache-tomcat-7.0.53/webapps'
+        include '*.war'
+    }
+
+    println 'Deployed!'
+
+}
+deployToTomcat.dependsOn { war }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+    distributionUrl = 'http://services.gradle.org/distributions/gradle-1.11-all.zip'
 }
