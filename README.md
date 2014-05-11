@@ -1,4 +1,4 @@
 playground
 ==========
 
-Space to try out with different technologies and ideas
+Miscellaneous projects to try out different technologies and ideas
