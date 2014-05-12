@@ -12,6 +12,7 @@ dependencies {
     compile("org.springframework:spring-context:4.0.4.RELEASE") {
         exclude group: 'commons-logging'
     }
+    compile("org.springframework:spring-web:4.0.4.RELEASE")
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.9.5'
