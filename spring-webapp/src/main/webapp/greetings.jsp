@@ -6,7 +6,7 @@
 
 <body>
 
-<h1>Simple Java Application</h1>
+<h1>Hello you!</h1>
 
 </body>
 

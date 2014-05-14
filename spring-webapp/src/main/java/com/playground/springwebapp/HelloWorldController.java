@@ -16,7 +16,7 @@ public class HelloWorldController {
         model.addAttribute("message", "Hello World!");
         System.out.println("in the controller");
         myService.doStuff();
-        return "result";
+        return "greetings";
     }
 
 }
