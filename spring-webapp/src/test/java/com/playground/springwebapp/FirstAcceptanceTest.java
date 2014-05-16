@@ -6,6 +6,8 @@ import com.googlecode.yatspec.state.givenwhenthen.WithTestState;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.fest.assertions.Assertions.assertThat;
+
 @RunWith(SpecRunner.class)
 public class FirstAcceptanceTest implements WithTestState {
 
@@ -18,16 +20,16 @@ public class FirstAcceptanceTest implements WithTestState {
         thenTheRequirementWorks();
     }
 
-    private void thenTheRequirementWorks() {
-
+    private void givenARequirement() {
+        yatspec.log("Interesting input", "mmmh, looks interesting...");
     }
 
     private void whenIDoSomething() {
 
     }
 
-    private void givenARequirement() {
-        yatspec.log("Interesting input", "mmmh, looks interesting...");
+    private void thenTheRequirementWorks() {
+        assertThat("my string").isNotEqualTo("this other string");
     }
 
     @Override
