@@ -38,18 +38,20 @@ sourceSets {
     }
 }
 
-task acceptanceTest(type: Test) {
-    testClassesDir = sourceSets.acceptanceTest.output.classesDir
-    classpath = sourceSets.acceptanceTest.runtimeClasspath
-}
-
 configurations {
     acceptanceTestCompile.extendsFrom testCompile
     acceptanceTestRuntime.extendsFrom testRuntime
 }
 
-acceptanceTest {
+task acceptanceTest(type: Test) {
+    description = "Runs the acceptance tests"
+    group = "Verification"
+    testClassesDir = sourceSets.acceptanceTest.output.classesDir
+    classpath = sourceSets.acceptanceTest.runtimeClasspath
+
     testLogging {
         events "passed", "skipped", "failed"
     }
 }
+
+check.dependsOn acceptanceTest
