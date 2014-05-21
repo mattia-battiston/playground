@@ -1,5 +1,6 @@
 package com.playground.springwebapp;
 
+import com.playground.springwebapp.customer.CustomerRegistrationService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +15,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
-    public MyService myService() {
-        return new MyService();
+    public CustomerRegistrationService customerRegistrationService() {
+        return new CustomerRegistrationService();
     }
 
     @Override

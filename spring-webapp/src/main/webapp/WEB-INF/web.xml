@@ -6,7 +6,7 @@
     <display-name>Simple Java WebApp</display-name>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 
     <listener>

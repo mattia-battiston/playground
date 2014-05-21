@@ -7,12 +7,9 @@
 <body>
    <h2>${message}</h2>
 
-   <form:form method="post" action="sayHello">
-
-               <form:label path="usernameLabel">Username</form:label>
-               <form:input path="username" />
-               <input type="submit" value="Say Hello"/>
-
+   <form:form  modelAttribute="customer" method="GET" action="registerCustomer">
+       Username: <form:input path="username" />
+       <input type="submit" value="Say Hello"/>
    </form:form>
 
 </body>
