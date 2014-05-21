@@ -22,3 +22,34 @@ test {
         events "passed", "skipped", "failed"
     }
 }
+
+// Test Structure
+sourceSets {
+    acceptanceTest {
+        java {
+            srcDir 'src/acceptanceTest/java'
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+        }
+
+        resources {
+            srcDir 'src/acceptanceTest/resources'
+        }
+    }
+}
+
+task acceptanceTest(type: Test) {
+    testClassesDir = sourceSets.acceptanceTest.output.classesDir
+    classpath = sourceSets.acceptanceTest.runtimeClasspath
+}
+
+configurations {
+    acceptanceTestCompile.extendsFrom testCompile
+    acceptanceTestRuntime.extendsFrom testRuntime
+}
+
+acceptanceTest {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
