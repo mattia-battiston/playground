@@ -7,7 +7,12 @@ repositories {
 }
 
 dependencies {
+    compile 'org.jdbi:jdbi:2.53'
+    compile 'hsqldb:hsqldb:1.8.0.10'
+
     testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
 }
 
 task wrapper(type: Wrapper) {
