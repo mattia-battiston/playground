@@ -16,6 +16,7 @@ public class DaoUsage {
 
 
     private UserDao userDao;
+    private DBI dbi;
 
     @Before
     public void setUp() throws Exception {
@@ -34,7 +35,7 @@ public class DaoUsage {
     }
 
     private void connect() {
-        DBI dbi = new DBI("jdbc:hsqldb:http ://localhost/mydb", "sa", "");
+        dbi = new DBI("jdbc:hsqldb:http ://localhost/mydb", "sa", "");
         userDao = dbi.open(UserDao.class);
     }
 
