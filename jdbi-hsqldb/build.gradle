@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+    distributionUrl = 'http://services.gradle.org/distributions/gradle-1.12-all.zip'
+}
