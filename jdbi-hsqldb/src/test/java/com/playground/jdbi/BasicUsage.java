@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
-import org.skife.jdbi.v2.Query;
 import org.skife.jdbi.v2.tweak.HandleCallback;
 import org.skife.jdbi.v2.util.StringMapper;
 
@@ -101,4 +100,5 @@ public class BasicUsage {
         assertThat(users).hasSize(2);
         assertThat(extractProperty("username").from(users)).containsOnly("mattia", "tony");
     }
+
 }

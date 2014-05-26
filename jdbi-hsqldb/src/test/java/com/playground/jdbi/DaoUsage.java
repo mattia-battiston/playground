@@ -7,6 +7,7 @@ import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
 import org.skife.jdbi.v2.ResultSetMapperFactory;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -51,10 +52,15 @@ public class DaoUsage {
 
         assertThat(userDao.findNameById("mattia")).isEqualTo("Mattia Battiston");
         assertThat(userDao.findNameById("tony")).isEqualTo("Tony Battiston");
-
-        // this doesn't work yet...
-//        Collection<User> allUsers = userDao.findAllUsers();
-//        assertThat(allUsers).hasSize(2);
-//        assertThat(extractProperty("username").from(allUsers)).containsOnly("mattia", "tony");
     }
+
+    @Test
+    public void insertBean() throws Exception {
+        userDao.createTable();
+
+        userDao.insertUser(new User("mattia", "Mattia Battiston"));
+
+        assertThat(userDao.size()).isEqualTo(1);
+    }
+
 }
