@@ -6,9 +6,6 @@ sourceCompatibility = JavaVersion.VERSION_1_7
 
 repositories {
     mavenCentral()
-    maven {
-        url "http://repo.bodar.com"
-    }
 }
 
 dependencies {
@@ -22,7 +19,6 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.9.5'
     testCompile 'org.easytesting:fest-assert:1.4'
-    testCompile 'com.googlecode.yatspec:yatspec:214'
 }
 
 task wrapper(type: Wrapper) {
