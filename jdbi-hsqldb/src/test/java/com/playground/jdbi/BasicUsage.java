@@ -36,7 +36,8 @@ public class BasicUsage {
 
     @Test
     public void basicUsage() throws Exception {
-        database.execute(" create table something (" +
+        database.execute(
+                " create table something (" +
                 "       id int primary key, " +
                 "       name varchar(100)" +
                 "   )");
@@ -59,7 +60,8 @@ public class BasicUsage {
 
     @Test
     public void selectList() throws Exception {
-        database.execute(" create table users (" +
+        database.execute(
+                " create table users (" +
                 "       username varchar(50) primary key, " +
                 "       name varchar(100)" +
                 "   )");
@@ -68,13 +70,13 @@ public class BasicUsage {
         database.insert("insert into users(username, name) values (?, ?)", "tony", "Tony Battiston");
 
         List<Map<String, Object>> select = database.select("select * from users");
-        System.out.println("select = " + select);
+        System.out.println("Style 1: select = " + select);
 
         List<Map<String, Object>> createQuery = database.createQuery("select * from users").list();
-        System.out.println("createQuery = " + createQuery);
+        System.out.println("Style 2: raw query = " + createQuery);
 
         List<User> users = database.createQuery("select * from users").map(User.class).list();
-        System.out.println("users = " + users);
+        System.out.println("Style 3: mapped query = " + users);
 
         database.close();
     }
@@ -85,7 +87,8 @@ public class BasicUsage {
         List<User> users = dbi.withHandle(new HandleCallback<List<User>>() {
             @Override
             public List<User> withHandle(Handle handle) throws Exception {
-                database.execute(" create table users (" +
+                database.execute(
+                        " create table users (" +
                         "       username varchar(50) primary key, " +
                         "       name varchar(100)" +
                         "   )");
