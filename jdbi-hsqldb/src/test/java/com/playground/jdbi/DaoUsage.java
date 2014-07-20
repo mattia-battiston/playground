@@ -70,6 +70,22 @@ public class DaoUsage {
         assertThat(extractProperty("name").from(users)).containsOnly("Super Mario Bros", "Super Luigi Bros");
     }
 
+    @Test
+    public void updateUsingObject() throws Exception {
+        userDao.createTable();
+        userDao.insert("mario", "Super Mario Bros");
+        userDao.insert("luigi", "Super Luigi Bros");
+
+        User user = new User();
+        user.setUsername("mario");
+        user.setName("New Super Mario Kart");
+        int updatedRows = userDao.update(user);
+        assertThat(updatedRows).isEqualTo(1);
+
+        String name = userDao.findNameByUsername("mario");
+        assertThat(name).isEqualTo("New Super Mario Kart");
+    }
+
     private void registerDriver() throws ClassNotFoundException {
         Class.forName("org.hsqldb.jdbcDriver");
     }

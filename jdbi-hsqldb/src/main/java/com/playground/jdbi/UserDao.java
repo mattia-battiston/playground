@@ -1,6 +1,7 @@
 package com.playground.jdbi;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
@@ -35,6 +36,9 @@ public interface UserDao {
 
     @SqlQuery("select * from users")
     List<User> findAllUsers();
+
+    @SqlUpdate("update users set name = :name where username = :username")
+    int update(@BindBean User user);
 
     /**
      * close with no args is used to close the connection
