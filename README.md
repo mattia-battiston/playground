@@ -11,7 +11,7 @@ Miscellaneous projects to try out different technologies and ideas
 
 ## TODO
 
-* dropwizard
+* Dropwizard
 * java 8
 * angular.js
 * Thymeleaf
@@ -24,3 +24,6 @@ Miscellaneous projects to try out different technologies and ideas
 * MongoDB
 * Neo4J
 * Play
+* Bootstrap 
+* Typography
+* Less vs Sass
