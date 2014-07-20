@@ -35,8 +35,10 @@ public class DaoUsage {
 
         assertThat(userDao.size()).isEqualTo(2);
 
-        assertThat(userDao.findNameById("mattia")).isEqualTo("Mattia Battiston");
-        assertThat(userDao.findNameById("tony")).isEqualTo("Tony Battiston");
+        assertThat(userDao.findNameByUsername("mattia")).isEqualTo("Mattia Battiston");
+        assertThat(userDao.findNameByUsername("tony")).isEqualTo("Tony Battiston");
+
+        assertThat(userDao.findAllUsernames()).containsOnly("mattia", "tony");
     }
 
     private void registerDriver() throws ClassNotFoundException {
@@ -45,7 +47,10 @@ public class DaoUsage {
 
     private void connect() {
         dbi = new DBI("jdbc:hsqldb:http ://localhost/mydb", "sa", "");
+
+        // onDemand creates a dao that opens and closes the connection automatically as it needs to
         userDao = dbi.onDemand(UserDao.class);
+
         userDao.cleanUpDatabase();
     }
 

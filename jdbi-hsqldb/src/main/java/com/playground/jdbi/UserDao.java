@@ -4,6 +4,8 @@ import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 
+import java.util.List;
+
 public interface UserDao {
 
     @SqlUpdate(
@@ -17,7 +19,10 @@ public interface UserDao {
     int insert(@Bind("username") String username, @Bind("name") String name);
 
     @SqlQuery("select name from users where username = :username")
-    String findNameById(@Bind("username") String username);
+    String findNameByUsername(@Bind("username") String username);
+
+    @SqlQuery("select username from users")
+    List<String> findAllUsernames();
 
     @SqlQuery("select count(*) from users")
     Integer size();
