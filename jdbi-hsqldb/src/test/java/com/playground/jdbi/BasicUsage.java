@@ -125,4 +125,25 @@ public class BasicUsage {
 
         assertThat(size).isEqualTo(2);
     }
+
+    @Test
+    public void bindingParameters() throws Exception {
+        database.execute(
+                " create table users (" +
+                        "       username varchar(50) primary key, " +
+                        "       name varchar(100)" +
+                        "   )");
+
+        int insertedRows = database.createStatement("insert into users(username, name) values (:username, :name)")
+                .bind("username", "mattia")
+                .bind("name", "Mattia Battiston").execute();
+        assertThat(insertedRows).isEqualTo(1);
+
+        insertedRows = database.createStatement("insert into users(username, name) values (:username, :name)")
+                .bind("username", "tony")
+                .bind("name", "Tony Battiston").execute();
+        assertThat(insertedRows).isEqualTo(1);
+
+        database.close();
+    }
 }
