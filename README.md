@@ -14,10 +14,12 @@ Miscellaneous projects to try out different technologies and ideas
 * Dropwizard
 * angular.js
 * Thymeleaf
+* Mustache
 * Dagger
 * java 8
 * assertj vs fest
 * Atom for events 
+* HATEOAS & hypermedia
 * microservices architecture
 * hadoop
 * Spring 4 & Spring Boot
@@ -28,3 +30,4 @@ Miscellaneous projects to try out different technologies and ideas
 * Bootstrap 
 * Typography
 * Less vs Sass
+* Guava
