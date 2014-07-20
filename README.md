@@ -20,3 +20,6 @@ Miscellaneous projects to try out different technologies and ideas
 * hadoop
 * Spring 4 & Spring Boot
 * Chef and/or Puppet
+* MongoDB
+* Neo4J
+* Play
