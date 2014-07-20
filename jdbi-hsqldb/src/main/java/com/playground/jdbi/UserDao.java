@@ -22,7 +22,7 @@ public interface UserDao {
     int insert(@Bind("username") String username, @Bind("name") String name);
 
     @SqlBatch("insert into users (username, name) values (:username, :name)")
-    @BatchChunkSize(10)
+    @BatchChunkSize(50)
     void bulkInsert(@BindBean Collection<User> users);
 
     @SqlQuery("select name from users where username = :username")
