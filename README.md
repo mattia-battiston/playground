@@ -14,6 +14,7 @@ Miscellaneous projects to try out different technologies and ideas
 * dropwizard
 * java 8
 * angular.js
+* Thymeleaf
 * assertj vs fest
 * atom for Rest
 * microservices architecture
