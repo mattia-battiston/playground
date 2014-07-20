@@ -18,6 +18,7 @@ Miscellaneous projects to try out different technologies and ideas
 * java 8
 * assertj vs fest
 * Atom for events 
+* HATEOAS & hypermedia
 * microservices architecture
 * hadoop
 * Spring 4 & Spring Boot
