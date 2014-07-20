@@ -6,8 +6,10 @@ import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
 
 import java.util.Iterator;
+import java.util.List;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.extractProperty;
 
 public class DaoUsage {
 
@@ -54,6 +56,18 @@ public class DaoUsage {
             String username = usernames.next();
             assertThat(username).isIn("mario", "luigi");
         }
+    }
+
+    @Test
+    public void objectMapper() throws Exception {
+        userDao.createTable();
+        userDao.insert("mario", "Super Mario Bros");
+        userDao.insert("luigi", "Super Luigi Bros");
+
+        List<User> users = userDao.findAllUsers();
+        assertThat(users).hasSize(2);
+        assertThat(extractProperty("username").from(users)).containsOnly("mario", "luigi");
+        assertThat(extractProperty("name").from(users)).containsOnly("Super Mario Bros", "Super Luigi Bros");
     }
 
     private void registerDriver() throws ClassNotFoundException {

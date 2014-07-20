@@ -3,10 +3,12 @@ package com.playground.jdbi;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import java.util.Iterator;
 import java.util.List;
 
+@RegisterMapper(UserMapper.class)
 public interface UserDao {
 
     @SqlUpdate(
@@ -31,8 +33,8 @@ public interface UserDao {
     @SqlQuery("select count(*) from users")
     Integer size();
 
-//    @SqlQuery("select * from users")
-//    Collection<User> findAllUsers();
+    @SqlQuery("select * from users")
+    List<User> findAllUsers();
 
     /**
      * close with no args is used to close the connection
