@@ -12,11 +12,12 @@ Miscellaneous projects to try out different technologies and ideas
 ## TODO
 
 * Dropwizard
-* java 8
 * angular.js
 * Thymeleaf
+* Dagger
+* java 8
 * assertj vs fest
-* atom for Rest
+* Atom for events 
 * microservices architecture
 * hadoop
 * Spring 4 & Spring Boot
