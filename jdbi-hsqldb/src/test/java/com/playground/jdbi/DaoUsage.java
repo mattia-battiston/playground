@@ -99,24 +99,4 @@ public class DaoUsage {
         userDao.cleanUpDatabase();
     }
 
-    // TODO investigate more about automatic mapping
-//    @Test
-//    public void mapper() throws Exception {
-//        dbi.registerMapper(new ResultSetMapper<User>() {
-//            @Override
-//            public User map(int index, ResultSet r, StatementContext ctx) throws SQLException {
-//                User user = new User();
-//                user.setName(r.getString("name"));
-//                user.setUsername(r.getString("username"));
-//                return user;
-//            }
-//        });
-//
-//        userDao.createTable();
-//        userDao.insert("user1", "User One");
-//        userDao.insert("user2", "User Two");
-//
-//        Collection<User> allUsers = userDao.findAllUsers();
-//        assertThat(allUsers).hasSize(2);
-//    }
 }
