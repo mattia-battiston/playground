@@ -40,8 +40,8 @@ public interface UserDao {
     @SqlQuery("select * from users")
     List<User> findAllUsers();
 
-    @SqlUpdate("update users set name = :name where username = :username")
-    int update(@BindBean User user);
+    @SqlUpdate("update users set name = :user.name where username = :user.username")
+    int update(@BindBean("user") User user);
 
     /**
      * close with no args is used to close the connection

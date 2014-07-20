@@ -33,6 +33,7 @@ public class BasicUsage {
     private void connect() {
         dbi = new DBI("jdbc:hsqldb:http ://localhost/mydb", "sa", "");
         database = dbi.open();
+        database.execute("DROP SCHEMA PUBLIC CASCADE");
     }
 
     @Test
