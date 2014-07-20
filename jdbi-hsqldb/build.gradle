@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.jdbi:jdbi:2.53'
+    compile 'org.jdbi:jdbi:2.55'
     compile 'hsqldb:hsqldb:1.8.0.10'
 
     testCompile 'junit:junit:4.11'
@@ -18,4 +18,12 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
     distributionUrl = 'http://services.gradle.org/distributions/gradle-1.12-all.zip'
+}
+
+apply plugin: 'idea'
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }

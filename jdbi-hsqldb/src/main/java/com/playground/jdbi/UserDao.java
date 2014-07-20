@@ -8,7 +8,8 @@ import java.util.Collection;
 
 public interface UserDao {
 
-    @SqlUpdate(" create table users (" +
+    @SqlUpdate(
+            " create table users (" +
             "       username varchar(50) primary key, " +
             "       name varchar(100)" +
             "   )")
@@ -17,21 +18,20 @@ public interface UserDao {
     @SqlUpdate("insert into users (username, name) values (:username, :name)")
     int insert(@Bind("username") String username, @Bind("name") String name);
 
-    @SqlUpdate("insert into users (username, name) values (:username, :name)")
-    int insertUser(@BindBean User user);
-
     @SqlQuery("select name from users where username = :username")
     String findNameById(@Bind("username") String username);
 
-    @SqlQuery("select * from users")
-    Collection<User> findAllUsers();
-
-    @SqlQuery("select count(*) from users")
-    int size();
+//    @SqlQuery("select * from users")
+//    Collection<User> findAllUsers();
 
     /**
      * close with no args is used to close the connection
      */
     void close();
+
+    @SqlUpdate(
+            "DROP SCHEMA PUBLIC CASCADE"
+    )
+    void cleanUpDatabase();
 
 }
