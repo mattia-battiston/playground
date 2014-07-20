@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
 import org.skife.jdbi.v2.tweak.HandleCallback;
+import org.skife.jdbi.v2.util.IntegerMapper;
 import org.skife.jdbi.v2.util.StringMapper;
 
 import java.util.List;
@@ -104,4 +105,24 @@ public class BasicUsage {
         assertThat(extractProperty("username").from(users)).containsOnly("mattia", "tony");
     }
 
+    @Test
+    public void anySql() throws Exception {
+        Integer size = dbi.withHandle(new HandleCallback<Integer>() {
+            @Override
+            public Integer withHandle(Handle handle) throws Exception {
+                database.execute(
+                        " create table users (" +
+                                "       username varchar(50) primary key, " +
+                                "       name varchar(100)" +
+                                "   )");
+
+                database.insert("insert into users(username, name) values (?, ?)", "mattia", "Mattia Battiston");
+                database.insert("insert into users(username, name) values (?, ?)", "tony", "Tony Battiston");
+
+                return database.createQuery("select count(*) from users").map(IntegerMapper.FIRST).first();
+            }
+        });
+
+        assertThat(size).isEqualTo(2);
+    }
 }
