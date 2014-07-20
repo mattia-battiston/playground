@@ -1,10 +1,8 @@
 package com.playground.jdbi;
 
-import org.skife.jdbi.v2.sqlobject.*;
-import org.skife.jdbi.v2.sqlobject.customizers.BatchChunkSize;
-import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
-
-import java.util.Collection;
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 
 public interface UserDao {
 
@@ -20,6 +18,9 @@ public interface UserDao {
 
     @SqlQuery("select name from users where username = :username")
     String findNameById(@Bind("username") String username);
+
+    @SqlQuery("select count(*) from users")
+    Integer size();
 
 //    @SqlQuery("select * from users")
 //    Collection<User> findAllUsers();

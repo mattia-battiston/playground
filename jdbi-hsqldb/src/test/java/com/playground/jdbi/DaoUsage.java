@@ -4,13 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
-import org.skife.jdbi.v2.ResultSetMapperFactory;
-import org.skife.jdbi.v2.StatementContext;
-import org.skife.jdbi.v2.tweak.ResultSetMapper;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Collection;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -22,23 +15,12 @@ public class DaoUsage {
     @Before
     public void setUp() throws Exception {
         registerDriver();
-
         connect();
     }
 
     @After
     public void tearDown() throws Exception {
-        userDao.cleanUpDatabase();
         userDao.close();
-    }
-
-    private void registerDriver() throws ClassNotFoundException {
-        Class.forName("org.hsqldb.jdbcDriver");
-    }
-
-    private void connect() {
-        dbi = new DBI("jdbc:hsqldb:http ://localhost/mydb", "sa", "");
-        userDao = dbi.open(UserDao.class);
     }
 
     @Test
@@ -51,8 +33,20 @@ public class DaoUsage {
         numberOfInsertedRows = userDao.insert("tony", "Tony Battiston");
         assertThat(numberOfInsertedRows).isEqualTo(1);
 
+        assertThat(userDao.size()).isEqualTo(2);
+
         assertThat(userDao.findNameById("mattia")).isEqualTo("Mattia Battiston");
         assertThat(userDao.findNameById("tony")).isEqualTo("Tony Battiston");
+    }
+
+    private void registerDriver() throws ClassNotFoundException {
+        Class.forName("org.hsqldb.jdbcDriver");
+    }
+
+    private void connect() {
+        dbi = new DBI("jdbc:hsqldb:http ://localhost/mydb", "sa", "");
+        userDao = dbi.onDemand(UserDao.class);
+        userDao.cleanUpDatabase();
     }
 
     // TODO investigate more about automatic mapping
