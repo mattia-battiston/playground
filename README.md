@@ -14,6 +14,7 @@ Miscellaneous projects to try out different technologies and ideas
 * Dropwizard
 * angular.js
 * Thymeleaf
+* Mustache
 * Dagger
 * java 8
 * assertj vs fest
