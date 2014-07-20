@@ -19,3 +19,4 @@ Miscellaneous projects to try out different technologies and ideas
 * microservices architecture
 * hadoop
 * Spring 4 & Spring Boot
+* Chef and/or Puppet
