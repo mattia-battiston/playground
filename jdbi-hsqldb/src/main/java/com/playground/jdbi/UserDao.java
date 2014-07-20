@@ -4,6 +4,7 @@ import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 
+import java.util.Iterator;
 import java.util.List;
 
 public interface UserDao {
@@ -23,6 +24,9 @@ public interface UserDao {
 
     @SqlQuery("select username from users")
     List<String> findAllUsernames();
+
+    @SqlQuery("select username from users")
+    Iterator<String> lazilyFindAllUsernames();
 
     @SqlQuery("select count(*) from users")
     Integer size();

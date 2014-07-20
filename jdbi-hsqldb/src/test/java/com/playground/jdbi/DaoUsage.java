@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
 
+import java.util.Iterator;
+
 import static org.fest.assertions.api.Assertions.assertThat;
 
 public class DaoUsage {
@@ -39,6 +41,19 @@ public class DaoUsage {
         assertThat(userDao.findNameByUsername("tony")).isEqualTo("Tony Battiston");
 
         assertThat(userDao.findAllUsernames()).containsOnly("mattia", "tony");
+    }
+
+    @Test
+    public void lazyIterator() throws Exception {
+        userDao.createTable();
+        userDao.insert("mario", "Super Mario Bros");
+        userDao.insert("luigi", "Super Luigi Bros");
+
+        Iterator<String> usernames = userDao.lazilyFindAllUsernames();
+        while(usernames.hasNext()) {
+            String username = usernames.next();
+            assertThat(username).isIn("mario", "luigi");
+        }
     }
 
     private void registerDriver() throws ClassNotFoundException {
