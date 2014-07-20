@@ -1,11 +1,25 @@
 apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_8
 
+apply plugin: 'idea'
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
+project.ext {
+    dropwizardVersion = '0.7.0'
+}
+
 dependencies {
+    compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
+
     testCompile 'junit:junit:4.11'
 }
 
@@ -14,10 +28,5 @@ task wrapper(type: Wrapper) {
     distributionUrl = 'http://services.gradle.org/distributions/gradle-2.0-all.zip'
 }
 
-apply plugin: 'idea'
-idea {
-    module {
-        downloadJavadoc = true
-        downloadSources = true
-    }
-}
+// TODO add configuration to create jar as artifact and run Main class
+// see https://github.com/gini/dropwizard-gradle
