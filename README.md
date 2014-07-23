@@ -31,3 +31,4 @@ Miscellaneous projects to try out different technologies and ideas
 * Typography
 * Less vs Sass
 * Guava
+* Multithreading strategies
