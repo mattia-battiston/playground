@@ -10,6 +10,14 @@ idea {
     }
 }
 
+// use the application plugin to run the main class from command line
+// usage: ./gradlew run
+apply plugin:'application'
+mainClassName = "com.example.helloworld.Main"
+run {
+    args 'server', 'dist/hello-world.yml'
+}
+
 repositories {
     mavenCentral()
 }
@@ -29,5 +37,5 @@ task wrapper(type: Wrapper) {
     distributionUrl = 'http://services.gradle.org/distributions/gradle-2.0-all.zip'
 }
 
-// TODO add configuration to create jar as artifact and run Main class
+// TODO add configuration to create jar as artifact
 // see https://github.com/gini/dropwizard-gradle
