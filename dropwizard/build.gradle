@@ -56,6 +56,7 @@ project.ext {
 }
 dependencies {
     compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
+    compile 'io.dropwizard:dropwizard-assets:' + dropwizardVersion
     compile 'org.hsqldb:hsqldb:2.3.2'
     compile 'com.jolbox:bonecp:0.8.0.RELEASE'
 
