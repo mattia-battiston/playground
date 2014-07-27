@@ -1,7 +1,10 @@
+// basic java config
 apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
+
+// intellij config
 apply plugin: 'idea'
 idea {
     module {
@@ -9,6 +12,7 @@ idea {
         downloadSources = true
     }
 }
+
 
 // use the application plugin to run the main class from command line
 // usage: ./gradlew run
@@ -18,24 +22,46 @@ run {
     args 'server', 'dist/hello-world.yml'
 }
 
+
+// package as a "fat jar" (using https://github.com/rholder/gradle-one-jar)
+// usage: ./gradlew oneJar
+apply plugin: 'gradle-one-jar'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+    }
+}
+task oneJar(type: OneJar) {
+    mainClass = mainClassName
+    archiveName = 'hello-world-dropwizard.jar'
+}
+artifacts {
+    oneJar
+}
+
+
+// repositories for dependencies
 repositories {
     mavenCentral()
 }
 
+
+// dependencies
 project.ext {
     dropwizardVersion = '0.7.0'
 }
-
 dependencies {
     compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
 
     testCompile 'junit:junit:4.11'
 }
 
+
+// gradle wrapper (to use gradlew)
 task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
     distributionUrl = 'http://services.gradle.org/distributions/gradle-2.0-all.zip'
 }
-
-// TODO add configuration to create jar as artifact
-// see https://github.com/gini/dropwizard-gradle
