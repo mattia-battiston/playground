@@ -11,7 +11,7 @@ Miscellaneous projects to try out different technologies and ideas
 
 ## TODO
 
-* Dropwizard
+* [__dropwizard__](Dropwizard)
 * angular.js
 * Thymeleaf
 * Mustache
