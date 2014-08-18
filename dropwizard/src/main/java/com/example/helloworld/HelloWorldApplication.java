@@ -42,7 +42,8 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         environment.lifecycle().manage(databaseConnectionPool);
         environment.healthChecks().register("database", new DatabaseHealthCheck(databaseConnectionPool));
 
-        environment.jersey().register(new BasicAuthProvider<User>(new SimpleAuthenticator(), "myRealm"));
+        BasicAuthProvider<User> basicAuthProvider = new BasicAuthProvider<>(new SimpleAuthenticator(), "myRealm");
+        environment.jersey().register(basicAuthProvider);
     }
 
 }

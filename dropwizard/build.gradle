@@ -52,7 +52,7 @@ repositories {
 
 // dependencies
 project.ext {
-    dropwizardVersion = '0.7.0'
+    dropwizardVersion = '0.7.1'
 }
 dependencies {
     compile 'io.dropwizard:dropwizard-core:' + dropwizardVersion
