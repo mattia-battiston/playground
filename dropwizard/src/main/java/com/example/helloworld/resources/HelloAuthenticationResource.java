@@ -1,8 +1,9 @@
 package com.example.helloworld.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.example.helloworld.authentication.RestrictedTo;
 import com.example.helloworld.authentication.User;
-import io.dropwizard.auth.Auth;
+import com.example.helloworld.authentication.UserRole;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -14,10 +15,11 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloAuthenticationResource {
 
+    @Path("role1")
     @GET
     @Timed
-    @Consumes("application/json")
-    public String sayHello(@Auth User user) {
+    @Consumes({MediaType.TEXT_PLAIN, MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_HTML, "application/octet-stream"})
+    public String sayHelloRole1(@RestrictedTo({UserRole.ROLE_1}) User user) {
         return "Hello authenticated " + user.getUsername();
     }
 

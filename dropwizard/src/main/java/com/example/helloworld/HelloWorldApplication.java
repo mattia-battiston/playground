@@ -1,7 +1,7 @@
 package com.example.helloworld;
 
-import com.example.helloworld.authentication.SimpleAuthenticator;
-import com.example.helloworld.authentication.User;
+import com.example.helloworld.authentication.ServerRestrictedToProvider;
+import com.example.helloworld.authentication.UserRoleAuthenticator;
 import com.example.helloworld.health.DatabaseHealthCheck;
 import com.example.helloworld.health.TemplateHealthCheck;
 import com.example.helloworld.repositories.DatabaseConnectionPool;
@@ -9,7 +9,6 @@ import com.example.helloworld.resources.HelloAuthenticationResource;
 import com.example.helloworld.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
-import io.dropwizard.auth.basic.BasicAuthProvider;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -42,8 +41,11 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         environment.lifecycle().manage(databaseConnectionPool);
         environment.healthChecks().register("database", new DatabaseHealthCheck(databaseConnectionPool));
 
-        BasicAuthProvider<User> basicAuthProvider = new BasicAuthProvider<>(new SimpleAuthenticator(), "myRealm");
-        environment.jersey().register(basicAuthProvider);
+//        BasicAuthProvider<User> basicAuthProvider = new BasicAuthProvider<>(new SimpleAuthenticator(), "myRealm");
+//        BasicAuthProvider<User> basicAuthProvider = new BasicAuthProvider<>(new UserRoleAuthenticator(), "myRealm");
+//        environment.jersey().register(basicAuthProvider);
+
+        environment.jersey().register(new ServerRestrictedToProvider(new UserRoleAuthenticator(), "myRealm"));
     }
 
 }
