@@ -3,6 +3,7 @@ package com.example.helloworld;
 import com.example.helloworld.health.DatabaseHealthCheck;
 import com.example.helloworld.health.TemplateHealthCheck;
 import com.example.helloworld.repositories.DatabaseConnectionPool;
+import com.example.helloworld.resources.HelloAuthenticationResource;
 import com.example.helloworld.resources.HelloWorldResource;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -27,6 +28,9 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     public void run(HelloWorldConfiguration configuration, Environment environment) {
         final HelloWorldResource resource = new HelloWorldResource(configuration.getTemplate(), configuration.getDefaultName());
         environment.jersey().register(resource);
+
+        final HelloAuthenticationResource helloAuthenticationResource = new HelloAuthenticationResource();
+        environment.jersey().register(helloAuthenticationResource);
 
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
