@@ -8,10 +8,9 @@ Miscellaneous projects to try out different technologies and ideas
 * [__spring-webapp__](spring-webapp): example spring-mvc app (spring 4, java config)
 * [__yatspec-acceptance-tests__](yatspec-acceptance-tests): demonstrate how to use yatspec for acceptance tests and how to configure gradle to keep different level of tests organized
 * [__jdbi-hsqldb__](jdbi-hsqldb): how to use jdbi for the database layer; uses hsqldb as in-memory db
+* [__dropwizard__](dropwizard): showcase of a simple dropwizard project, trying out a few functionalities
 
 ## TODO
-
-* [__dropwizard__](dropwizard)
 * angular.js
 * Thymeleaf
 * Mustache
