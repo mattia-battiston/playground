@@ -15,11 +15,11 @@ import javax.ws.rs.core.Response;
 
 public class ServerRestrictedToInjector<T> extends AbstractHttpContextInjectable<T> {
 
-    private final UserRoleAuthenticator userRoleAuthenticator;
+    private final UserAuthenticator userRoleAuthenticator;
     private final String realm;
     private final UserRole value;
 
-    public ServerRestrictedToInjector(UserRoleAuthenticator userRoleAuthenticator, String realm, UserRole[] value) {
+    public ServerRestrictedToInjector(UserAuthenticator userRoleAuthenticator, String realm, UserRole[] value) {
         this.userRoleAuthenticator = userRoleAuthenticator;
         this.realm = realm;
         this.value = value[0];

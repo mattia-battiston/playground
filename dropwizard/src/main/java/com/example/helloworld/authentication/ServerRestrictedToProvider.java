@@ -8,10 +8,10 @@ import com.sun.jersey.spi.inject.InjectableProvider;
 
 public class ServerRestrictedToProvider implements InjectableProvider<RestrictedTo, Parameter> {
 
-    private final UserRoleAuthenticator userRoleAuthenticator;
+    private final UserAuthenticator userRoleAuthenticator;
     private final String realm;
 
-    public ServerRestrictedToProvider(UserRoleAuthenticator userRoleAuthenticator, String realm) {
+    public ServerRestrictedToProvider(UserAuthenticator userRoleAuthenticator, String realm) {
         this.userRoleAuthenticator = userRoleAuthenticator;
         this.realm = realm;
     }

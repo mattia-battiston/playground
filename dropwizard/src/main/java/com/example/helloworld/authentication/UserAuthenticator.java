@@ -5,7 +5,7 @@ import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
 
-public class UserRoleAuthenticator implements Authenticator<BasicCredentials, User> {
+public class UserAuthenticator implements Authenticator<BasicCredentials, User> {
 
     @Override
     public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException {
