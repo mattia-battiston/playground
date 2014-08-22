@@ -23,7 +23,7 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
 
     @Override
     public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap) {
-        bootstrap.addBundle(new AssetsBundle("/web/views", "/views", "index.htm", "views"));
+        bootstrap.addBundle(new AssetsBundle("/web/views", "/views", "index.html", "views"));
         bootstrap.addBundle(new AssetsBundle("/web/css", "/css", null, "css"));
         bootstrap.addBundle(new AssetsBundle("/web/js", "/js", null, "js"));
     }
