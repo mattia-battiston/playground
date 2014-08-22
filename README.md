@@ -11,7 +11,7 @@ Miscellaneous projects to try out different technologies and ideas
 * [__dropwizard__](dropwizard): showcase of a simple dropwizard project, trying out a few functionalities
 
 ## TODO
-* [__angularjs__](angular.js)
+* [__angular.js__](angularjs)
 * Thymeleaf
 * Mustache
 * Dagger
