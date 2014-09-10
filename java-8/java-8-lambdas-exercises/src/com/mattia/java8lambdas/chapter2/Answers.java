@@ -30,6 +30,11 @@ public class Answers {
         System.out.println("formattedDate = " + formattedDate);
     }
 
-    
+    @Test
+    public void question3() throws Exception {
 
+        // a. yes
+        Runnable runnable = () -> System.out.println("Hello world");
+
+    }
 }
